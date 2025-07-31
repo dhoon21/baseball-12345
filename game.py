@@ -28,4 +28,7 @@ class Game:
             guessNumber[1] == guessNumber[2]:
             raise TypeError()
 
-        return GameResult(True, 3, 0)
+        if guessNumber == self._question:
+            return GameResult(True, 3, 0)
+
+        return GameResult(False, 0, 0)

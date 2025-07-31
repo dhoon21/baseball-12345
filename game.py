@@ -1,5 +1,9 @@
+from game_result import GameResult
+
 class Game:
-    def guess(self, guessNumber):
+    def __init__(self):
+        self.question = ""
+    def guess(self, guessNumber) -> GameResult:
         if guessNumber is None:
             raise TypeError()
 
@@ -14,3 +18,5 @@ class Game:
             guessNumber[0] == guessNumber[2] or \
             guessNumber[1] == guessNumber[2]:
             raise TypeError()
+
+        return GameResult(True, 3, 0)

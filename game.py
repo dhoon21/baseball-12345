@@ -12,23 +12,24 @@ class Game:
     def question(self, value):
         self._question = value
 
-    def guess(self, guessNumber) -> GameResult:
-        if guessNumber is None:
-            raise TypeError()
+    def guess(self, guess_number) -> GameResult | None:
+        self._assert_illegal_value(guess_number)
 
-        if len(guessNumber) != 3:
-            raise TypeError()
-
-        for number in guessNumber:
-            if not ord('0') <= ord(number) <= ord('9'):
-                raise TypeError()
-
-        if guessNumber[0] == guessNumber[1] or \
-            guessNumber[0] == guessNumber[2] or \
-            guessNumber[1] == guessNumber[2]:
-            raise TypeError()
-
-        if guessNumber == self._question:
+        if guess_number == self._question:
             return GameResult(True, 3, 0)
 
         return GameResult(False, 0, 0)
+
+    def _assert_illegal_value(self, guess_number):
+        if guess_number is None:
+            raise TypeError()
+        if len(guess_number) != 3:
+            raise TypeError()
+        for number in guess_number:
+            if not ord('0') <= ord(number) <= ord('9'):
+                raise TypeError()
+        if guess_number[0] == guess_number[1] or \
+                guess_number[0] == guess_number[2] or \
+                guess_number[1] == guess_number[2]:
+            raise TypeError()
+

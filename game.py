@@ -28,8 +28,6 @@ class Game:
                 if number in self._question:
                     balls += 1
 
-        if strikes == 3:
-            solved = True
         return GameResult(solved, strikes, balls)
 
     def _assert_illegal_value(self, guess_number):

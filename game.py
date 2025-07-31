@@ -2,7 +2,16 @@ from game_result import GameResult
 
 class Game:
     def __init__(self):
-        self.question = ""
+        self._question = ""
+    
+    @property
+    def question(self):
+        raise AttributeError("읽을 수 없는 속성")
+
+    @question.setter
+    def question(self, value):
+        self._question = value
+
     def guess(self, guessNumber) -> GameResult:
         if guessNumber is None:
             raise TypeError()
